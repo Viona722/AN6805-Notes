@@ -21,10 +21,34 @@
 # 2. Decision Tree 
 1. For Classification, 适用于 数值型和类别型数据，可处理缺失值，适用于分类和回归任务
 2. There could be more than one tree that fits the same data!
-3. Decision Tree Induction:
+3. Decision Tree Induction: A tree can be learned by splitting training data into subsets based on outcomes of a feature test. This process is recursively applied on each derived subset until the subset at a node has all the same value of the
+target variable or there is no improvement for prediction
    1. Hunt's Algorithm：找到能完全分类的变量进行分类
    2. CART
    3. ID#
    4. C4.5
    5. SLIQ
    6. SPRINT
+4. Greedy strategy
+5. Issues:
+   1. Determine how to split:
+      * how to specify the attribute test condition?
+         * Attribute types: Continuous: Discretization or Binary Decision (compute intensive)
+         * Number of ways to split(2-way, multi-way)
+      * How to determine the best split?
+         * Gini Index：
+           Used in CART, SLIQ, SPRINT
+         <img width="634" alt="image" src="https://github.com/user-attachments/assets/cdf18082-cb54-4445-a48c-986960273b86" />有几个类别就减多少个
+         <img width="180" alt="image" src="https://github.com/user-attachments/assets/8a097331-9910-4e27-93e2-b2afdf4ea4e5" />
+
+         * Entropy
+           <img width="550" alt="image" src="https://github.com/user-attachments/assets/bbf68512-e0ff-4e49-abe6-c3b7e42abd62" />
+           <img width="515" alt="image" src="https://github.com/user-attachments/assets/e5905c66-3330-48e0-91fa-7f161db3bc39" />
+
+         * Information Gain:
+           Used in ID3, C4.5. Tends to prefer splits that result in large number of
+partitions, each being small but pure.父节点的熵减去子节点的熵
+           <img width="642" alt="image" src="https://github.com/user-attachments/assets/2ce221b0-42e6-4f72-8db1-c5e81a4dc7d8" />
+
+         * Misclassification error
+   3. Determine when to stop splitting
