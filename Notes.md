@@ -64,7 +64,17 @@ partitions, each being small but pure.父节点的熵减去子节点的熵
       Overfitting results in decision trees that are more complex than necessary.
       Training error no longer provides a good estimate of how well the tree will perform on previously unseen records.
       Need new ways for estimating errors. Use generalization errors: Error on previously unseen testing set
-   5. General Error
+      How to address:
+      * Pre-Pruning:
+           * Stop if number of instances is less than some user-specified threshold
+           * Stop if the tree reach a maximum depth predefined by user.
+           * Stop if class distribution of instances are independent of the available features.
+           * Stop if expanding the current node does not improve generalization errors
+      * Using Validation Set: 把训练集划分为训练集和测试集，交叉验证。
+      * Post-Pruning:
+           * 全部建好树之后再减，从下往上，可以根据generalization error选择是否剪枝，剪枝后的class由多数决定。<img width="727" alt="image" src="https://github.com/user-attachments/assets/4efc3b92-f636-426d-b8b7-6d7d9a354a25" />
+
+   6. General Error
       * Occam's Razor: Definition: Given two models of similar generalization errors, one should prefer the simpler model over the more complex model
 
 # 3. SVM
