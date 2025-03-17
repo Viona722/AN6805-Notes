@@ -80,3 +80,23 @@ partitions, each being small but pure.父节点的熵减去子节点的熵
 # 3. SVM
 
    1. Small margins 更容易受到Noise的影响。而且会有更高的testing error rate comparing with large margin.
+   2. seeks the hyperplane with maximum margin as a decision boundary to separate the data.
+   3. 点到直线的距离公式![image](https://github.com/user-attachments/assets/86b6e1e1-55c1-4cdb-a9e7-653ecafe95a8)
+   4. Multi-class:多根线
+# 4. Classifier Evaluation
+   1. Evaluation:2-way data partitioning:train, test, test. 验证和超参数调整通常通过其他方式（例如交叉验证）来完成。
+     1. Cross validation: Random subsampling, K-Fold cross-validation, Leave-one-out validation(Jackknife)
+   3. Evaluation:3-way data partitioning:train, validate, test. 除了训练集和测试集外，还有一个独立的验证集，用于超参数调优、模型选择和防止过拟合。
+   4. testing set cannot within training set
+   5. 在机器学习中，2-way数据划分指的是将数据集划分为两部分：训练集和测试集。然而，使用这种划分方法时，存在一个问题：它不能同时满足所有模型训练和评估的需求。
+      * 训练（Training）：在训练集上训练模型，让模型学习数据中的模式。
+      * 模型选择（Model Selection）：选择最适合的模型或选择超参数的过程，这通常需要依赖于验证集。
+      * 误差估计（Error Estimation）：对模型的预测误差进行估计，通常使用测试集来评估模型在未见过数据上的表现。
+   6. 为什么2-way划分不能支持这三者：
+      * 训练集：用于训练模型，但只包含了一部分数据。
+      * 测试集：用于最终评估模型的性能，但如果你用测试集来进行模型选择或调优，那么测试集就不再是“独立的”，这会导致“数据泄露”（data leakage），影响评估的公平性。
+        因此，当我们仅仅使用训练集和测试集时：
+      * 训练集用于训练模型；
+      * 测试集用于评估模型，但如果我们还用它来选择最佳模型或进行超参数调整，就会导致对测试集的“过度依赖”，从而影响其作为“未见过数据”的独立性和有效性。
+# 5. Linear Regression
+
